@@ -45,17 +45,17 @@ io.on('connection', socket => {
 
     socket.on('user-typing', (data) => {
         io
-        .to(data.members[0])
-        .to(data.members[1])
-        .emit('started-typing', data)
+            .to(data.members[0])
+            .to(data.members[1])
+            .emit('started-typing', data)
     })
 
-    socket.on("user-login",userId=>{
-         if(!onlineUsers.includes(userId)){
+    socket.on("user-login", userId => {
+        if (!onlineUsers.includes(userId)) {
             onlineUsers.push(userId)
-         }
+        }
         //  console.log("onlineUsers server",onlineUsers)
-         socket.emit("online-users",onlineUsers);
+        socket.emit("online-users", onlineUsers);
     })
 
 })
